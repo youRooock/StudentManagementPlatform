@@ -1,6 +1,7 @@
 using FakeItEasy;
 using StudentManagementSystem.Application.Services;
 using StudentManagementSystem.Application.Test.Stubs;
+using StudentManagementSystem.Domain.Entities;
 using StudentManagementSystem.Domain.Interfaces.Repositories;
 using StudentManagementSystem.Domain.Interfaces.Services;
 using Xunit;
@@ -47,5 +48,23 @@ public class MinistryServiceTests
         A.CallTo(() => _institutionRepository.Find(LicenseNumber)).Returns(InstitutionStub.Get(LicenseNumber, verified:true, removed:true));
 
         Assert.Throws<ArgumentException>(() => _ministryService.FindInstitution(LicenseNumber));
+    }
+    
+    [Fact]
+    public void ShouldGetAllInstitutions()
+    {
+        var institutionEntities = InstitutionStub.GetMany();
+        A.CallTo(() => _institutionRepository.GetAll()).Returns(institutionEntities);
+        var institutions = _ministryService.GetAllInstitutions();
+        
+        Assert.Equal(institutionEntities.Count, institutions.Count);
+    }
+    
+    [Fact]
+    public void ShouldThrowInInstitutionsNotFound()
+    {
+        A.CallTo(() => _institutionRepository.GetAll()).Returns(Enumerable.Empty<EducationalInstitutionEntity>().ToList());
+
+        Assert.Throws<ArgumentException>(() => _ministryService.GetAllInstitutions());
     }
 }

@@ -25,4 +25,9 @@ public static class InstitutionStub
             Courses = Fixture.Create<List<CourseEntity>>()
         };
     }
+    
+    public static List<EducationalInstitutionEntity> GetMany()
+    {
+        return Fixture.Create<List<EducationalInstitutionEntity>>();
+    }
 }
