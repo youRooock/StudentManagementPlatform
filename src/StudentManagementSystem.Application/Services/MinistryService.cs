@@ -21,6 +21,24 @@ public class MinistryService: IMinistryService
 
     public EducationalInstitution? FindInstitution(string licenseNumber)
     {
-        throw new NotImplementedException();
+        var institutionEntity = _institutionRepository.Find(licenseNumber);
+
+        if (institutionEntity.Removed)
+            throw new ArgumentException("Institution deactivated");
+        if (!institutionEntity.Verified)
+            throw new ArgumentException("Institution not verified");
+
+        return new EducationalInstitution
+        {
+            Name = institutionEntity.Name,
+            LicenseNumber = institutionEntity.LicenseNumber,
+            Courses = institutionEntity.Courses.Select(e => new Course
+            {
+                Name = e.Name,
+                StartTime = e.StartTime,
+                StudentsCapacity = e.StudentsCapacity,
+                MinScoreRequired = e.MinScoreRequired
+            }).ToList()
+        };
     }
 }
