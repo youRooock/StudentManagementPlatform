@@ -37,9 +37,20 @@ public class EducationalInstitutionService : IEducationalInstitutionService
         throw new NotImplementedException();
     }
 
-    public Course? FindCourse(int institutionId, int courseId)
+    public Course FindCourse(int institutionId, int courseId)
     {
-        throw new NotImplementedException();
+        var courseEntity = _institutionRepository.FindCourse(institutionId, courseId);
+
+        if (courseEntity is null)
+            throw new ArgumentException("Course not found");
+
+        return new Course
+        {
+            Name = courseEntity.Name,
+            StartTime = courseEntity.StartTime,
+            StudentsCapacity = courseEntity.StudentsCapacity,
+            MinScoreRequired = courseEntity.MinScoreRequired
+        };
     }
 
     public bool AcceptForCourse(int applicantId, int institutionId, int courseId)
