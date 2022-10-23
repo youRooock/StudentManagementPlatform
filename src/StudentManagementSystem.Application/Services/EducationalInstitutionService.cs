@@ -16,7 +16,20 @@ public class EducationalInstitutionService : IEducationalInstitutionService
 
     public List<Course> ListAvailableCourses(int institutionId)
     {
-        throw new NotImplementedException();
+        var courseEntities= _institutionRepository.FindAllCourses(institutionId);
+
+        if (!courseEntities.Any())
+        {
+            throw new ArgumentException("No courses available");
+        }
+        
+        return courseEntities.Select(e => new Course
+        {
+            Name = e.Name,
+            StartTime = e.StartTime,
+            StudentsCapacity = e.StudentsCapacity,
+            MinScoreRequired = e.MinScoreRequired
+        }).ToList();
     }
 
     public void CreateCourse(int institutionId, Course course)
