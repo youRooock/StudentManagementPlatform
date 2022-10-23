@@ -17,7 +17,22 @@ public class ApplicantsService: IApplicantsService
 
     public Applicant GetApplicantInfo(int applicantId)
     {
-        throw new NotImplementedException();
+        var applicantEntity = _applicantRepository.Find(applicantId);
+
+        if (applicantEntity is null)
+            throw new ArgumentException("Applicant not found");
+        
+        if (!applicantEntity.Activated)
+            throw new ArgumentException("Applicant is deactivated");
+
+        return new Applicant
+        {
+            Name = applicantEntity.Name,
+            Email = applicantEntity.Email,
+            DateOfBirth = applicantEntity.DateOfBirth,
+            AverageScore = applicantEntity.AverageScore,
+            Country = applicantEntity.Country
+        };
     }
 
     public Domain.Models.Application CreateApplication(int applicantId, List<object> requiredDocuments)

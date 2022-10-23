@@ -40,7 +40,8 @@ public class ApplicantsServiceTests
     [Fact]
     public void ShouldThrowIfApplicantNotFound()
     {
-        A.CallTo(() => _applicantRepository.Find(ApplicantId)).Returns(null);
+        A.CallTo(() => _applicantRepository.Find(NotExistingApplicantId)).Returns(null);
+        
         Assert.Throws<ArgumentException>(() => _applicantsService.GetApplicantInfo(NotExistingApplicantId));
     }
 
