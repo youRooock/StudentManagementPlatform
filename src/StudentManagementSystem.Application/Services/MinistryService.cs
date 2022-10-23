@@ -16,7 +16,23 @@ public class MinistryService: IMinistryService
 
     public List<EducationalInstitution> GetAllInstitutions()
     {
-        throw new NotImplementedException();
+        var entities = _institutionRepository.GetAll();
+
+        if (!entities.Any())
+            throw new ArgumentException("No institutions found");
+
+        return entities.Select(e => new EducationalInstitution
+        {
+            Name = e.Name,
+            LicenseNumber = e.LicenseNumber,
+            Courses = e.Courses.Select(c => new Course
+            {
+                MinScoreRequired = c.MinScoreRequired,
+                Name = c.Name,
+                StartTime = c.StartTime,
+                StudentsCapacity = c.MinScoreRequired
+            }).ToList()
+        }).ToList();
     }
 
     public EducationalInstitution? FindInstitution(string licenseNumber)
