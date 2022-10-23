@@ -11,4 +11,18 @@ public static class InstitutionStub
     {
         return Fixture.Create<List<CourseEntity>>();
     }
+    
+    public static EducationalInstitutionEntity Get(string licenseNumber, bool verified, bool removed)
+    {
+        return new EducationalInstitutionEntity
+        {
+            Id = Fixture.Create<int>(),
+            Name = Fixture.Create<string>(),
+            Created = Fixture.Create<DateTime>(),
+            Verified = verified,
+            Removed = removed,
+            LicenseNumber = licenseNumber,
+            Courses = Fixture.Create<List<CourseEntity>>()
+        };
+    }
 }

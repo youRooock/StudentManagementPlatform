@@ -8,4 +8,5 @@ public interface IEducationalInstitutionRepository
     CourseEntity FindCourse(int id, int courseId);
     List<CourseEntity> FindAllCourses(int id);
     void Update(EducationalInstitutionEntity entity);
+    EducationalInstitutionEntity Find(string licenseNumber);
 }
