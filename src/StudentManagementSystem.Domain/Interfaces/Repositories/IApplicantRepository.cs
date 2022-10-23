@@ -4,5 +4,5 @@ namespace StudentManagementSystem.Domain.Interfaces.Repositories;
 
 public interface IApplicantRepository
 {
-    ApplicantEntity Find(int id);
+    ApplicantEntity? Find(int id);
 }

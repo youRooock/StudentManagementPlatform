@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentManagementSystem.Api
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{1DCB968B-636E-46D4-A8FC-BD5CD7446EC5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentManagementSystem.Application.Test", "tests\StudentManagementSystem.Application.Test\StudentManagementSystem.Application.Test.csproj", "{84FFFD87-BFF3-4AD1-967F-6E6F531B8E46}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,7 @@ Global
 		{BE8997EE-42F9-40A1-BFA7-C5B25E6888BE} = {77E72DA9-6B23-4210-A510-9F7379FF2CCB}
 		{D536360D-CCDD-4841-819E-16E5B7353AA6} = {77E72DA9-6B23-4210-A510-9F7379FF2CCB}
 		{F6E363B8-8E06-487E-B640-31521FE3A783} = {77E72DA9-6B23-4210-A510-9F7379FF2CCB}
+		{84FFFD87-BFF3-4AD1-967F-6E6F531B8E46} = {1DCB968B-636E-46D4-A8FC-BD5CD7446EC5}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{BE8997EE-42F9-40A1-BFA7-C5B25E6888BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -33,5 +36,9 @@ Global
 		{F6E363B8-8E06-487E-B640-31521FE3A783}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6E363B8-8E06-487E-B640-31521FE3A783}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6E363B8-8E06-487E-B640-31521FE3A783}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84FFFD87-BFF3-4AD1-967F-6E6F531B8E46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84FFFD87-BFF3-4AD1-967F-6E6F531B8E46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84FFFD87-BFF3-4AD1-967F-6E6F531B8E46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84FFFD87-BFF3-4AD1-967F-6E6F531B8E46}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
